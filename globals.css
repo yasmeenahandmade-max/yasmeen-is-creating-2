@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================================
+   Yasmeen Is Creating — Global Styles
+   ============================================= */
+
+/* Google Fonts import — DM Sans for body, Tajawal for Arabic */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Tajawal:wght@300;400;500;700&display=swap');
+
+/*
+  NOTE: "Asterone" is a custom font from the branding.
+  Place the font files in /public/fonts/ and uncomment below:
+*/
+@font-face {
+  font-family: 'Asterone';
+  src: url('/fonts/Asterone-Regular.woff2') format('woff2'),
+       url('/fonts/Asterone-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  /* Default: LTR English */
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-brand-cream text-brand-charcoal font-body;
+  }
+
+  /* Arabic RTL overrides */
+  [dir='rtl'] body {
+    @apply font-arabic;
+  }
+
+  /* Headings use the brand display font */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-wider uppercase;
+  }
+
+  [dir='rtl'] h1,
+  [dir='rtl'] h2,
+  [dir='rtl'] h3,
+  [dir='rtl'] h4,
+  [dir='rtl'] h5,
+  [dir='rtl'] h6 {
+    @apply font-arabic tracking-normal normal-case;
+  }
+
+  /* Smooth anchor links */
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  /* Selection color */
+  ::selection {
+    @apply bg-brand-rose/20 text-brand-charcoal;
+  }
+}
+
+@layer components {
+  /* Container */
+  .container-brand {
+    @apply max-w-7xl mx-auto px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Section spacing */
+  .section-spacing {
+    @apply py-16 sm:py-20 lg:py-28;
+  }
+
+  /* Brand button — primary */
+  .btn-primary {
+    @apply inline-flex items-center justify-center
+           px-8 py-3.5
+           bg-brand-charcoal text-white
+           text-sm font-medium tracking-widest uppercase
+           rounded-brand
+           hover:bg-brand-forest
+           transition-all duration-300
+           focus:outline-none focus:ring-2 focus:ring-brand-rose focus:ring-offset-2;
+  }
+
+  /* Brand button — secondary / outline */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center
+           px-8 py-3.5
+           bg-transparent text-brand-charcoal
+           text-sm font-medium tracking-widest uppercase
+           border border-brand-charcoal
+           rounded-brand
+           hover:bg-brand-charcoal hover:text-white
+           transition-all duration-300
+           focus:outline-none focus:ring-2 focus:ring-brand-rose focus:ring-offset-2;
+  }
+
+  /* Brand button — soft */
+  .btn-soft {
+    @apply inline-flex items-center justify-center
+           px-8 py-3.5
+           bg-brand-blush text-brand-charcoal
+           text-sm font-medium tracking-widest uppercase
+           rounded-brand
+           hover:bg-brand-peach
+           transition-all duration-300;
+  }
+
+  /* Card base */
+  .card-brand {
+    @apply bg-white rounded-brand shadow-card
+           overflow-hidden
+           transition-shadow duration-300
+           hover:shadow-elevated;
+  }
+
+  /* Input fields */
+  .input-brand {
+    @apply w-full px-4 py-3
+           bg-white border border-brand-sky/50
+           rounded-brand
+           text-brand-charcoal text-sm
+           placeholder:text-brand-charcoal/40
+           focus:outline-none focus:border-brand-rose focus:ring-1 focus:ring-brand-rose/30
+           transition-all duration-200;
+  }
+
+  [dir='rtl'] .input-brand {
+    @apply text-right;
+  }
+
+  /* Badge / tag */
+  .badge-brand {
+    @apply inline-block px-3 py-1
+           text-xs font-medium tracking-wider uppercase
+           bg-brand-blush text-brand-charcoal
+           rounded-full;
+  }
+
+  /* Divider line */
+  .divider-brand {
+    @apply w-full h-px bg-brand-sky/30;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* RTL flip utility */
+  [dir='rtl'] .rtl-flip {
+    transform: scaleX(-1);
+  }
+
+  /* Stagger animation delays */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+}
